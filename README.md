@@ -3,17 +3,16 @@
 
 - Specifically, we develop a  lightweight neural network model with only 43k parameters to  perform real-time distance estimation by extracting temporal  information from reverberant signals. The estimated distances  are then processed using an extended Kalman filter to achieve  online sound source localization.
 
-| Problem setup and sound source localization framework |  |
-|---|---|
+| Problem setup and sound source localization framework |
+|---|
 |<img src="fig/system.png" width="70%" />| 
 
-
-| Structure of the distance estimation neural network |  |
-|---|---|
+| Structure of the distance estimation neural network |
+|---|
 |<img src="fig/network.png" width="80%" />| 
 
-| Structure of the distance estimation neural network |  |
-|---|---|
+| Real World Setup |
+|---|
 |<img src="fig/real_world_setup.png" width="70%" />| 
 
 ## Detailed Usage
