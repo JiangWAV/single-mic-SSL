@@ -1,0 +1,13 @@
+{
+    "001": [
+        {
+            "id": "001",
+            "speaker": "001",
+            "bookid": "001",
+            "speech_path": "YOUR-ABSOLUTE-PATH\\chirp_signals\\chirp_0000_8000_repeated.wav",
+            "sample rate": 16000,
+            "length": 160000,
+            "time_length": 10.0
+        }
+    ]
+}

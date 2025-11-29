@@ -1,0 +1,114 @@
+[trainer]
+epochs = 200
+save_checkpoint_interval = 50
+clip_grad_norm_value     = 5.0                                                    
+
+# The output path of the model
+exp_path = 'YOUR-ABSOLUTE-PATH\output\1_room\'   # 1 room
+# exp_path = 'D:\work_code\distance_esti\output\0224_ourmodel_100room\'           # 100 rooms
+
+resume = false                                                                    # false true
+resume_datetime = '2025-02-22-14h16m'
+resume_step     = 'model_0200_loss_0.1333.tar'
+resume_lr       = 0.00025                                                         # 0.0001
+
+[FFT]
+n_fft      = 512
+hop_length = 128          
+win_length = 512          
+[optimizer]
+lr = 1e-3
+
+# train dataset setting --------------------------------------------------------------------------------------------
+[train_dataset]
+# 1 room experiment
+index_file = ['YOUR-ABSOLUTE-PATH\dataset\FramRIRs\RIR_1room_900mic_50src_0224\data_info\train_info.json',
+            'YOUR-ABSOLUTE-PATH\chirp_signals\train_info.json']
+
+# 100 room experiments
+# index_file = ['D:\work_code\dataset\FramRIRs\RIR_100room_100mic_50src_0221\data_info_sameroom\train_info.json',
+#             'YOUR-ABSOLUTE-PATH\chirp_signals\train_info.json']
+
+shuffle = true         # false
+num_tot = 0
+wav_len = 0.2          # input: cut the spec to s, length: s * sample frequency
+
+[train_dataloader]
+batch_size = 84       
+num_workers = 4
+drop_last = true
+pin_memory = true
+
+[train_gene_setting]
+dataset_size = 8000
+n_src = 1
+sample_rate = 16000
+target_sample_rate = 16000
+
+# mix setting
+random_mix_posi = true
+tgt_amplify = true
+amplify_range = [-25, -20]                      # target dB
+
+# validation dataset setting --------------------------------------------------------------------------------------------
+[validation_dataset]
+# 1 room experiment 
+index_file = ['YOUR-ABSOLUTE-PATH\dataset\FramRIRs\RIR_1room_900mic_50src_0224\data_info\val_info.json',
+            'YOUR-ABSOLUTE-PATH\chirp_signals\train_info.json']
+
+# 100 room experiments
+# index_file = ['D:\work_code\dataset\FramRIRs\RIR_100room_100mic_50src_0221\data_info_sameroom\val_info.json',
+#             'YOUR-ABSOLUTE-PATH\chirp_signals\train_info.json']
+
+shuffle = true             # false true
+num_tot = 0
+wav_len = 0.2              # input wave length
+
+[validation_dataloader]
+batch_size = 1
+num_workers = 4
+drop_last = true
+pin_memory = true
+
+[val_gene_setting]
+dataset_size = 200          # per epoch
+n_src = 1                   # number of source
+sample_rate = 16000         
+target_sample_rate = 8000   
+
+# mix setting
+random_mix_posi = true
+tgt_amplify = true # false   # true
+amplify_range = [-25, -20]   # target dB
+
+# test dataset setting --------------------------------------------------------------------------------------------
+[test_dataset]
+# 1 room experiment 
+# index_file = ['YOUR-ABSOLUTE-PATH\dataset\FramRIRs\RIR_1room_900mic_50src_0224\data_info\test_info.json',
+#              'YOUR-ABSOLUTE-PATH\chirp_signals\train_info.json']
+
+# 100 room experiments
+index_file = ['YOUR-ABSOLUTE-PATH\dataset\FramRIRs\RIR_100room_100mic_50src_0224\data_info\test_info.json',
+            'YOUR-ABSOLUTE-PATH\chirp_signals\train_info.json']
+
+shuffle = true                   # false
+num_tot = 0
+wav_len = 0.2                    # input: cut the spec to s, length: s * sample frequency
+
+[test_dataloader]
+batch_size = 1 
+num_workers = 4
+drop_last = true
+pin_memory = true
+
+[test_gene_setting]
+dataset_size = 5000              
+n_src = 1
+sample_rate = 16000
+target_sample_rate = 16000        
+
+# mix setting
+random_mix_posi = true
+tgt_amplify = true 
+amplify_range = [-25, -20] 
+

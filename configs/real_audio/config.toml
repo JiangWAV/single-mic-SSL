@@ -1,0 +1,111 @@
+[trainer]
+epochs = 100                                           # 100
+save_checkpoint_interval = 50
+clip_grad_norm_value = 5.0
+
+# The path of the fine tune model
+exp_path = 'YOUR-ABSOLUTE-PATH\output\real_world\'
+
+# fine tune model
+resume = true
+resume_datetime = '2025-11-28-01h36m'
+resume_step = 'best_epoch_0128_loss_0.1306.tar'
+resume_lr = 0.0008                                                        # 0.0001
+
+[FFT]
+n_fft      = 512      
+hop_length = 128      
+win_length = 512      
+
+[optimizer]
+lr = 1e-3
+
+# --------------------------------------------------------------------------------------------
+# train dataset setting 
+[train_dataset]
+
+shuffle = true            # false
+num_tot = 0
+wav_len = 3.0
+
+[train_dataloader]
+batch_size = 84
+num_workers = 4
+drop_last = true
+pin_memory = true
+
+[train_gene_setting]
+audio_root_dirs   = 'YOUR-ABSOLUTE-PATH\real_record\audio'
+mic_pos_root_dirs = 'YOUR-ABSOLUTE-PATH\real_record\mic_pos'
+used_experiment_name = [
+                        1, 2, 3, 6, 7, 8, 11, 12, 13, 16, 17, 18, 21, 22, 23
+                        ]
+dataset_size = 8000
+n_src = 1
+sample_rate = 16000
+target_sample_rate = 16000      # target frequency
+
+# mix setting
+random_mix_posi = true
+tgt_amplify = true              # false # true
+amplify_range = [-25, -20]      # target dB
+
+# --------------------------------------------------------------------------------------------
+# validation dataset setting 
+[validation_dataset]
+
+shuffle = true           # false true
+num_tot = 0
+wav_len = 3.0            # input wave length
+
+[validation_dataloader]
+batch_size = 1
+num_workers = 4
+drop_last = true
+pin_memory = true
+
+[val_gene_setting]
+audio_root_dirs   = 'YOUR-ABSOLUTE-PATH\real_record\audio'
+mic_pos_root_dirs = 'YOUR-ABSOLUTE-PATH\real_record\mic_pos'
+used_experiment_name = [
+                        4, 5, 9, 10, 14, 15, 19, 20, 24,25
+                        ]
+dataset_size = 400          
+n_src = 1                   
+sample_rate = 16000
+target_sample_rate = 8000
+
+# mix setting
+random_mix_posi = true
+tgt_amplify = true           # false # true
+amplify_range = [-25, -20]   # target dB
+
+# --------------------------------------------------------------------------------------------
+# test dataset setting
+[test_dataset]
+shuffle = true
+num_tot = 0
+wav_len = 0.2
+
+[test_dataloader]
+batch_size = 1 
+num_workers = 4
+drop_last = true
+pin_memory = true
+
+[test_gene_setting]
+audio_root_dirs   = 'YOUR-ABSOLUTE-PATH\real_record\audio'
+mic_pos_root_dirs = 'YOUR-ABSOLUTE-PATH\real_record\mic_pos'
+used_experiment_name = [
+                        26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36
+                        ]
+
+dataset_size = 2000
+n_src = 1
+sample_rate = 16000
+target_sample_rate = 16000
+
+# mix setting
+random_mix_posi = true
+tgt_amplify = true
+amplify_range = [-25, -20] 
