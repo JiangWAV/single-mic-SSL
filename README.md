@@ -5,15 +5,15 @@
 
 | Problem setup and sound source localization framework |
 |---|
-|<img src="fig/system.png" width="70%" />| 
+|<div align="center"><img src="fig/system.png" width="70%" />| 
 
 | Structure of the distance estimation neural network |
 |---|
-|<img src="fig/network.png" width="80%" />| 
+|<div align="center"><img src="fig/network.png" width="80%" />| 
 
 | Real World Setup |
 |---|
-|<img src="fig/real_world_setup.png" width="70%" />| 
+|<div align="center"><img src="fig/real_world_setup.png" width="70%" />| 
 
 ## Detailed Usage
 #### Distance Estimations
